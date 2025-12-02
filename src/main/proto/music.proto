@@ -1,0 +1,96 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.github.viniciusdev26.musicfy.grpc.music";
+option java_outer_classname = "MusicProto";
+
+package music;
+
+service MusicService {
+  rpc CreateMusic (CreateMusicRequest) returns (CreateMusicResponse);
+  rpc GetMusics (GetMusicsRequest) returns (GetMusicsResponse);
+  rpc GetMusicById (GetMusicByIdRequest) returns (MusicResponse);
+  rpc UpdateMusic (UpdateMusicRequest) returns (MusicResponse);
+  rpc DeleteMusic (DeleteMusicRequest) returns (DeleteMusicResponse);
+  rpc SearchMusicsByTitle (SearchMusicsByTitleRequest) returns (GetMusicsResponse);
+  rpc SearchMusicsByArtist (SearchMusicsByArtistRequest) returns (GetMusicsResponse);
+}
+
+message CreateMusicRequest {
+  string title = 1;
+  string artist = 2;
+  string album = 3;
+  int32 duration = 4;
+}
+
+message CreateMusicResponse {
+  int64 id = 1;
+  string title = 2;
+  string artist = 3;
+  string album = 4;
+  int32 duration = 5;
+  string created_at = 6;
+}
+
+message GetMusicsRequest {
+  int32 page = 1;
+  int32 size = 2;
+}
+
+message GetMusicsResponse {
+  repeated MusicDto musics = 1;
+  int32 total = 2;
+  int32 page = 3;
+  int32 size = 4;
+}
+
+message GetMusicByIdRequest {
+  int64 id = 1;
+}
+
+message UpdateMusicRequest {
+  int64 id = 1;
+  string title = 2;
+  string artist = 3;
+  string album = 4;
+  int32 duration = 5;
+}
+
+message DeleteMusicRequest {
+  int64 id = 1;
+}
+
+message DeleteMusicResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message SearchMusicsByTitleRequest {
+  string title = 1;
+  int32 page = 2;
+  int32 size = 3;
+}
+
+message SearchMusicsByArtistRequest {
+  string artist = 1;
+  int32 page = 2;
+  int32 size = 3;
+}
+
+message MusicResponse {
+  int64 id = 1;
+  string title = 2;
+  string artist = 3;
+  string album = 4;
+  int32 duration = 5;
+  string created_at = 6;
+}
+
+message MusicDto {
+  int64 id = 1;
+  string title = 2;
+  string artist = 3;
+  string album = 4;
+  int32 duration = 5;
+  string created_at = 6;
+}

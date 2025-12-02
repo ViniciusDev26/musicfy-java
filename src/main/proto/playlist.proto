@@ -1,0 +1,154 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.github.viniciusdev26.musicfy.grpc.playlist";
+option java_outer_classname = "PlaylistProto";
+
+package playlist;
+
+service PlaylistService {
+  rpc CreatePlaylist (CreatePlaylistRequest) returns (CreatePlaylistResponse);
+  rpc GetPlaylists (GetPlaylistsRequest) returns (GetPlaylistsResponse);
+  rpc GetPlaylistById (GetPlaylistByIdRequest) returns (PlaylistResponse);
+  rpc UpdatePlaylist (UpdatePlaylistRequest) returns (PlaylistResponse);
+  rpc DeletePlaylist (DeletePlaylistRequest) returns (DeletePlaylistResponse);
+  rpc AddMusicToPlaylist (AddMusicToPlaylistRequest) returns (AddMusicToPlaylistResponse);
+  rpc RemoveMusicFromPlaylist (RemoveMusicFromPlaylistRequest) returns (RemoveMusicFromPlaylistResponse);
+  rpc GetPlaylistsByMusicId (GetPlaylistsByMusicIdRequest) returns (GetPlaylistsByMusicIdResponse);
+  rpc SharePlaylist (SharePlaylistRequest) returns (SharePlaylistResponse);
+  rpc GetSharedPlaylists (GetSharedPlaylistsRequest) returns (GetPlaylistsResponse);
+}
+
+message CreatePlaylistRequest {
+  string name = 1;
+  string description = 2;
+  int64 user_id = 3;
+}
+
+message CreatePlaylistResponse {
+  int64 id = 1;
+  string name = 2;
+  string description = 3;
+  int64 user_id = 4;
+  string created_at = 5;
+}
+
+message GetPlaylistsRequest {
+  int64 user_id = 1;
+  int32 page = 2;
+  int32 size = 3;
+}
+
+message GetPlaylistsResponse {
+  repeated PlaylistDto playlists = 1;
+  int32 total = 2;
+  int32 page = 3;
+  int32 size = 4;
+}
+
+message GetPlaylistByIdRequest {
+  int64 id = 1;
+}
+
+message UpdatePlaylistRequest {
+  int64 id = 1;
+  string name = 2;
+  string description = 3;
+}
+
+message DeletePlaylistRequest {
+  int64 id = 1;
+}
+
+message DeletePlaylistResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message AddMusicToPlaylistRequest {
+  int64 playlist_id = 1;
+  int64 music_id = 2;
+  int32 position = 3;
+}
+
+message AddMusicToPlaylistResponse {
+  bool success = 1;
+  string message = 2;
+  PlaylistDto playlist = 3;
+}
+
+message RemoveMusicFromPlaylistRequest {
+  int64 playlist_id = 1;
+  int64 music_id = 2;
+}
+
+message RemoveMusicFromPlaylistResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message GetPlaylistsByMusicIdRequest {
+  int64 music_id = 1;
+  int32 page = 2;
+  int32 size = 3;
+}
+
+message GetPlaylistsByMusicIdResponse {
+  repeated PlaylistWithMusicDto playlists = 1;
+  int32 total = 2;
+  int32 page = 3;
+  int32 size = 4;
+}
+
+message SharePlaylistRequest {
+  int64 playlist_id = 1;
+  int64 user_id = 2;
+  string permission = 3;
+}
+
+message SharePlaylistResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message GetSharedPlaylistsRequest {
+  int64 user_id = 1;
+  int32 page = 2;
+  int32 size = 3;
+}
+
+message PlaylistResponse {
+  int64 id = 1;
+  string name = 2;
+  string description = 3;
+  int64 user_id = 4;
+  string created_at = 5;
+  repeated MusicInPlaylistDto musics = 6;
+}
+
+message PlaylistDto {
+  int64 id = 1;
+  string name = 2;
+  string description = 3;
+  int64 user_id = 4;
+  string created_at = 5;
+  repeated MusicInPlaylistDto musics = 6;
+}
+
+message PlaylistWithMusicDto {
+  int64 id = 1;
+  string name = 2;
+  string description = 3;
+  int64 user_id = 4;
+  string created_at = 5;
+  int32 position = 6;
+}
+
+message MusicInPlaylistDto {
+  int64 id = 1;
+  string title = 2;
+  string artist = 3;
+  string album = 4;
+  int32 duration = 5;
+  int32 position = 6;
+}

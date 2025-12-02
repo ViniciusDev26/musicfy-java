@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://musicfy.viniciusdev26.github.com/soap/musics"
+           targetNamespace="http://musicfy.viniciusdev26.github.com/soap/musics"
+           elementFormDefault="qualified">
+
+    <xs:element name="GetMusicsRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="playlistId" type="xs:long" minOccurs="0"/>
+                <xs:element name="artist" type="xs:string" minOccurs="0"/>
+                <xs:element name="searchTerm" type="xs:string" minOccurs="0"/>
+                <xs:element name="page" type="xs:int" minOccurs="0"/>
+                <xs:element name="pageSize" type="xs:int" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="GetMusicsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="musics" type="tns:MusicSoapDto" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="totalCount" type="xs:int"/>
+                <xs:element name="page" type="xs:int" minOccurs="0"/>
+                <xs:element name="pageSize" type="xs:int" minOccurs="0"/>
+                <xs:element name="totalPages" type="xs:int" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="CreateMusicRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+                <xs:element name="artist" type="xs:string"/>
+                <xs:element name="audioUrl" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="CreateMusicResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="music" type="tns:MusicSoapDto"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="MusicSoapDto">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="artist" type="xs:string"/>
+            <xs:element name="audioUrl" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

@@ -1,0 +1,160 @@
+# User Types
+type User {
+    id: ID!
+    name: String!
+    birthDate: String!
+    email: String!
+    age: Int!
+}
+
+type UserList {
+    users: [User!]!
+    totalCount: Int!
+    page: Int
+    pageSize: Int
+    totalPages: Int
+}
+
+input CreateUserInput {
+    name: String!
+    birthDate: String!
+    email: String!
+}
+
+input ListUsersInput {
+    page: Int
+    pageSize: Int
+}
+
+# Music Types
+type Music {
+    id: ID!
+    name: String!
+    artist: String!
+    audioUrl: String!
+    orderInPlaylist: Int
+    addedToPlaylistAt: String
+}
+
+type MusicList {
+    musics: [Music!]!
+    totalCount: Int!
+    page: Int
+    pageSize: Int
+    totalPages: Int
+    filteredByArtist: String
+    searchedTerm: String
+    filteredByPlaylistId: ID
+}
+
+input CreateMusicInput {
+    name: String!
+    artist: String!
+    audioUrl: String!
+}
+
+input ListMusicsInput {
+    playlistId: ID
+    artist: String
+    searchTerm: String
+    page: Int
+    pageSize: Int
+}
+
+# Playlist Types
+type Playlist {
+    id: ID!
+    name: String!
+    userId: ID
+    isSystemPlaylist: Boolean!
+    createdAt: String!
+    ownerName: String
+}
+
+type MusicInPlaylist {
+    musicId: ID!
+    name: String!
+    artist: String!
+    order: Int!
+}
+
+type PlaylistWithMusics {
+    id: ID!
+    name: String!
+    userId: ID
+    isSystemPlaylist: Boolean!
+    createdAt: String!
+    totalMusics: Int!
+    musics: [MusicInPlaylist!]!
+}
+
+type PlaylistList {
+    playlists: [Playlist!]!
+    totalCount: Int!
+    page: Int
+    pageSize: Int
+    totalPages: Int
+    filteredByUserId: ID
+    systemOnly: Boolean
+    userOnly: Boolean
+}
+
+type PlaylistWithMusic {
+    playlistId: ID!
+    playlistName: String!
+    userId: ID
+    isSystemPlaylist: Boolean!
+    orderInPlaylist: Int!
+    addedAt: String!
+    ownerName: String
+}
+
+type PlaylistsByMusic {
+    musicId: ID!
+    musicName: String!
+    musicArtist: String!
+    playlists: [PlaylistWithMusic!]!
+    totalCount: Int!
+}
+
+input CreatePlaylistInput {
+    name: String!
+    userId: ID
+    musicIds: [ID!]
+}
+
+input ListPlaylistsInput {
+    userId: ID
+    systemOnly: Boolean
+    page: Int
+    pageSize: Int
+}
+
+input ListPlaylistsByMusicInput {
+    musicId: ID!
+}
+
+# Queries
+type Query {
+    # User queries
+    Users(input: ListUsersInput!): UserList!
+
+    # Music queries
+    Musics(input: ListMusicsInput!): MusicList!
+
+    # Playlist queries
+    Playlists(input: ListPlaylistsInput!): PlaylistList!
+    PlaylistsByMusic(input: ListPlaylistsByMusicInput!): PlaylistsByMusic!
+}
+
+# Mutations
+type Mutation {
+    # User mutations
+    CreateUser(input: CreateUserInput!): User!
+
+    # Music mutations
+    CreateMusic(input: CreateMusicInput!): Music!
+
+    # Playlist mutations
+    CreatePlaylist(input: CreatePlaylistInput!): PlaylistWithMusics!
+}
