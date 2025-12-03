@@ -14,22 +14,22 @@ import jakarta.xml.bind.annotation.XmlType;
 @NoArgsConstructor
 @AllArgsConstructor
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(name = "GetMusicsRequest")
-@XmlType(name = "GetMusicsRequest", propOrder = {"playlistId", "artist", "searchTerm", "page", "pageSize"})
+@XmlRootElement(name = "GetMusicsRequest", namespace = "http://musicfy.viniciusdev26.github.com/soap/musics")
+@XmlType(name = "GetMusicsRequest", namespace = "http://musicfy.viniciusdev26.github.com/soap/musics", propOrder = {"playlistId", "artist", "searchTerm", "page", "pageSize"})
 public class GetMusicsRequest {
 
-    @XmlElement
+    @XmlElement(namespace = "http://musicfy.viniciusdev26.github.com/soap/musics")
     private Long playlistId;
 
-    @XmlElement
+    @XmlElement(namespace = "http://musicfy.viniciusdev26.github.com/soap/musics")
     private String artist;
 
-    @XmlElement
+    @XmlElement(namespace = "http://musicfy.viniciusdev26.github.com/soap/musics")
     private String searchTerm;
 
-    @XmlElement
+    @XmlElement(namespace = "http://musicfy.viniciusdev26.github.com/soap/musics")
     private Integer page;
 
-    @XmlElement
+    @XmlElement(namespace = "http://musicfy.viniciusdev26.github.com/soap/musics")
     private Integer pageSize;
 }

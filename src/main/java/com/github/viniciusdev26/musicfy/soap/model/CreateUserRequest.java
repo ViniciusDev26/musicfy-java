@@ -15,16 +15,16 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(name = "CreateUserRequest")
-@XmlType(name = "CreateUserRequest", propOrder = {"name", "birthDate", "email"})
+@XmlRootElement(name = "CreateUserRequest", namespace = "http://musicfy.viniciusdev26.github.com/soap/users")
+@XmlType(name = "CreateUserRequest", namespace = "http://musicfy.viniciusdev26.github.com/soap/users", propOrder = {"name", "birthDate", "email"})
 public class CreateUserRequest {
 
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://musicfy.viniciusdev26.github.com/soap/users", required = true)
     private String name;
 
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://musicfy.viniciusdev26.github.com/soap/users", required = true)
     private LocalDate birthDate;
 
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://musicfy.viniciusdev26.github.com/soap/users", required = true)
     private String email;
 }

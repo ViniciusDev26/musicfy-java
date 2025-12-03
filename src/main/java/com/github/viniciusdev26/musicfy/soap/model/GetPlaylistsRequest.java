@@ -14,19 +14,19 @@ import jakarta.xml.bind.annotation.XmlType;
 @NoArgsConstructor
 @AllArgsConstructor
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(name = "GetPlaylistsRequest")
-@XmlType(name = "GetPlaylistsRequest", propOrder = {"userId", "systemOnly", "page", "pageSize"})
+@XmlRootElement(name = "GetPlaylistsRequest", namespace = "http://musicfy.viniciusdev26.github.com/soap/playlists")
+@XmlType(name = "GetPlaylistsRequest", namespace = "http://musicfy.viniciusdev26.github.com/soap/playlists", propOrder = {"userId", "systemOnly", "page", "pageSize"})
 public class GetPlaylistsRequest {
 
-    @XmlElement
+    @XmlElement(namespace = "http://musicfy.viniciusdev26.github.com/soap/playlists")
     private Long userId;
 
-    @XmlElement
+    @XmlElement(namespace = "http://musicfy.viniciusdev26.github.com/soap/playlists")
     private Boolean systemOnly;
 
-    @XmlElement
+    @XmlElement(namespace = "http://musicfy.viniciusdev26.github.com/soap/playlists")
     private Integer page;
 
-    @XmlElement
+    @XmlElement(namespace = "http://musicfy.viniciusdev26.github.com/soap/playlists")
     private Integer pageSize;
 }

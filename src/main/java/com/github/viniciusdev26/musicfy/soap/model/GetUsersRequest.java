@@ -14,13 +14,13 @@ import jakarta.xml.bind.annotation.XmlType;
 @NoArgsConstructor
 @AllArgsConstructor
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(name = "GetUsersRequest")
-@XmlType(name = "GetUsersRequest", propOrder = {"page", "pageSize"})
+@XmlRootElement(name = "GetUsersRequest", namespace = "http://musicfy.viniciusdev26.github.com/soap/users")
+@XmlType(name = "GetUsersRequest", namespace = "http://musicfy.viniciusdev26.github.com/soap/users", propOrder = {"page", "pageSize"})
 public class GetUsersRequest {
 
-    @XmlElement
+    @XmlElement(namespace = "http://musicfy.viniciusdev26.github.com/soap/users")
     private Integer page;
 
-    @XmlElement
+    @XmlElement(namespace = "http://musicfy.viniciusdev26.github.com/soap/users")
     private Integer pageSize;
 }

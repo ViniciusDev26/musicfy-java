@@ -13,18 +13,18 @@ import jakarta.xml.bind.annotation.XmlType;
 @NoArgsConstructor
 @AllArgsConstructor
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "MusicSoapDto", propOrder = {"id", "name", "artist", "audioUrl"})
+@XmlType(name = "MusicSoapDto", namespace = "http://musicfy.viniciusdev26.github.com/soap/musics", propOrder = {"id", "name", "artist", "audioUrl"})
 public class MusicSoapDto {
 
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://musicfy.viniciusdev26.github.com/soap/musics", required = true)
     private Long id;
 
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://musicfy.viniciusdev26.github.com/soap/musics", required = true)
     private String name;
 
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://musicfy.viniciusdev26.github.com/soap/musics", required = true)
     private String artist;
 
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://musicfy.viniciusdev26.github.com/soap/musics", required = true)
     private String audioUrl;
 }

@@ -16,22 +16,22 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(name = "GetUsersResponse")
-@XmlType(name = "GetUsersResponse", propOrder = {"users", "totalCount", "page", "pageSize", "totalPages"})
+@XmlRootElement(name = "GetUsersResponse", namespace = "http://musicfy.viniciusdev26.github.com/soap/users")
+@XmlType(name = "GetUsersResponse", namespace = "http://musicfy.viniciusdev26.github.com/soap/users", propOrder = {"users", "totalCount", "page", "pageSize", "totalPages"})
 public class GetUsersResponse {
 
-    @XmlElement(required = true)
+    @XmlElement(required = true, namespace = "http://musicfy.viniciusdev26.github.com/soap/users")
     private List<UserSoapDto> users = new ArrayList<>();
 
-    @XmlElement(required = true)
+    @XmlElement(required = true, namespace = "http://musicfy.viniciusdev26.github.com/soap/users")
     private Integer totalCount;
 
-    @XmlElement
+    @XmlElement(namespace = "http://musicfy.viniciusdev26.github.com/soap/users")
     private Integer page;
 
-    @XmlElement
+    @XmlElement(namespace = "http://musicfy.viniciusdev26.github.com/soap/users")
     private Integer pageSize;
 
-    @XmlElement
+    @XmlElement(namespace = "http://musicfy.viniciusdev26.github.com/soap/users")
     private Integer totalPages;
 }

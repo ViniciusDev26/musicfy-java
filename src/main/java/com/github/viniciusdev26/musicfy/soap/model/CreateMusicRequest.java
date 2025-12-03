@@ -14,16 +14,16 @@ import jakarta.xml.bind.annotation.XmlType;
 @NoArgsConstructor
 @AllArgsConstructor
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(name = "CreateMusicRequest")
-@XmlType(name = "CreateMusicRequest", propOrder = {"name", "artist", "audioUrl"})
+@XmlRootElement(name = "CreateMusicRequest", namespace = "http://musicfy.viniciusdev26.github.com/soap/musics")
+@XmlType(name = "CreateMusicRequest", namespace = "http://musicfy.viniciusdev26.github.com/soap/musics", propOrder = {"name", "artist", "audioUrl"})
 public class CreateMusicRequest {
 
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://musicfy.viniciusdev26.github.com/soap/musics", required = true)
     private String name;
 
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://musicfy.viniciusdev26.github.com/soap/musics", required = true)
     private String artist;
 
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://musicfy.viniciusdev26.github.com/soap/musics", required = true)
     private String audioUrl;
 }

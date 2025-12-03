@@ -14,21 +14,21 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "UserSoapDto", propOrder = {"id", "name", "birthDate", "email", "age"})
+@XmlType(name = "UserSoapDto", namespace = "http://musicfy.viniciusdev26.github.com/soap/users", propOrder = {"id", "name", "birthDate", "email", "age"})
 public class UserSoapDto {
 
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://musicfy.viniciusdev26.github.com/soap/users", required = true)
     private Long id;
 
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://musicfy.viniciusdev26.github.com/soap/users", required = true)
     private String name;
 
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://musicfy.viniciusdev26.github.com/soap/users", required = true)
     private LocalDate birthDate;
 
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://musicfy.viniciusdev26.github.com/soap/users", required = true)
     private String email;
 
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://musicfy.viniciusdev26.github.com/soap/users", required = true)
     private Integer age;
 }

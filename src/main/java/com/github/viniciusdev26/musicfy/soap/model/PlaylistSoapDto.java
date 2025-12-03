@@ -14,24 +14,24 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "PlaylistSoapDto", propOrder = {"id", "name", "userId", "isSystemPlaylist", "createdAt", "ownerName"})
+@XmlType(name = "PlaylistSoapDto", namespace = "http://musicfy.viniciusdev26.github.com/soap/playlists", propOrder = {"id", "name", "userId", "isSystemPlaylist", "createdAt", "ownerName"})
 public class PlaylistSoapDto {
 
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://musicfy.viniciusdev26.github.com/soap/playlists", required = true)
     private Long id;
 
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://musicfy.viniciusdev26.github.com/soap/playlists", required = true)
     private String name;
 
-    @XmlElement
+    @XmlElement(namespace = "http://musicfy.viniciusdev26.github.com/soap/playlists")
     private Long userId;
 
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://musicfy.viniciusdev26.github.com/soap/playlists", required = true)
     private Boolean isSystemPlaylist;
 
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://musicfy.viniciusdev26.github.com/soap/playlists", required = true)
     private LocalDateTime createdAt;
 
-    @XmlElement
+    @XmlElement(namespace = "http://musicfy.viniciusdev26.github.com/soap/playlists")
     private String ownerName;
 }

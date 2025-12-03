@@ -16,16 +16,16 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(name = "CreatePlaylistRequest")
-@XmlType(name = "CreatePlaylistRequest", propOrder = {"name", "userId", "musicIds"})
+@XmlRootElement(name = "CreatePlaylistRequest", namespace = "http://musicfy.viniciusdev26.github.com/soap/playlists")
+@XmlType(name = "CreatePlaylistRequest", namespace = "http://musicfy.viniciusdev26.github.com/soap/playlists", propOrder = {"name", "userId", "musicIds"})
 public class CreatePlaylistRequest {
 
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://musicfy.viniciusdev26.github.com/soap/playlists", required = true)
     private String name;
 
-    @XmlElement
+    @XmlElement(namespace = "http://musicfy.viniciusdev26.github.com/soap/playlists")
     private Long userId;
 
-    @XmlElement
+    @XmlElement(namespace = "http://musicfy.viniciusdev26.github.com/soap/playlists")
     private List<Long> musicIds = new ArrayList<>();
 }
